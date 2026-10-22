@@ -8,7 +8,7 @@ https://agents.kore.ai/preview#share_token=eyJwcm9qZWN0SWQiOiIwMWExNDQxNC1kMDIzL
 
 - `01_SOP/` — project standard operating procedure.
 - `02_Project_Export/` — Gradious project export with Evals excluded.
-- `03_Evals_Output/` — completed 100/100 Evals screenshot.
+- `03_Evals_Output/` — completed Evals screenshot.
 - `04_End_User_Conversation/` — end-user conversation and routing evidence.
 - `05_Supervisor_Transcript/` — Supervisor conversation transcript and debug trace.
 - `06_Configuration_Evidence/` — agent, tool, routing, and guardrail screenshots.
