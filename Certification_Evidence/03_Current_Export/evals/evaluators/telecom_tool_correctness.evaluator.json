@@ -1,0 +1,37 @@
+{
+  "name": "Telecom_Tool_Correctness",
+  "description": "Evaluate specialist routing, tool selection, required parameters,\nand use of returned data.",
+  "type": "llm_judge",
+  "category": "quality",
+  "judgeModel": "ministral-3b-latest",
+  "judgePrompt": "Evaluate tool correctness using the supplied execution records,\ntool arguments, and results.\n\nCheck that:\n- General plan requests use the appropriate plan-query specialist\n  and HTTP tool.\n- Account-specific requests perform customer lookup before using\n  the returned account type to retrieve matching plans.\n- A second customer lookup does not reuse the previous customer's\n  ID or account type incorrectly.\n- SIM requests use the relevant read-only MCP tools.\n- Required IDs and account types are passed correctly.\n- Missing required information is collected before dependent calls.\n- No purchase, recharge, or SIM-record modification is performed.\n\nJudge applicable requirements for the assigned scenario.\nDo not require unrelated tools to be called.\nDo not infer that a tool was used merely because an answer sounds\ncorrect. If execution evidence is unavailable, report insufficient\nevidence rather than awarding an unsupported pass.\n\nGive a concise verdict supported by observed tool activity.",
+  "chainOfThought": true,
+  "temperature": 0,
+  "scoringRubric": {
+    "scaleType": "pass-fail",
+    "passThreshold": 1,
+    "points": [
+      {
+        "value": 0,
+        "label": "Fail",
+        "criteria": "Required criteria were not met.",
+        "examples": []
+      },
+      {
+        "value": 1,
+        "label": "Pass",
+        "criteria": "Required criteria were met.",
+        "examples": []
+      }
+    ]
+  },
+  "biasSettings": {
+    "positionSwapEnabled": true,
+    "blindEvaluation": true,
+    "crossModelJudge": false,
+    "evidenceFirstMode": true
+  },
+  "trajectoryMetrics": [],
+  "isBuiltIn": false,
+  "_exportedId": "01a15398-ca18-7584-ac30-30408ee2937e"
+}

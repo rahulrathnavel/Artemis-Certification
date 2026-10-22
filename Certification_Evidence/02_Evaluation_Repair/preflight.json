@@ -1,0 +1,76 @@
+{
+  "success": true,
+  "result": {
+    "overall": "fail",
+    "checks": [
+      {
+        "name": "data_protection",
+        "status": "pass",
+        "message": "Data protection settings are ready.",
+        "durationMs": 1
+      },
+      {
+        "name": "service_configuration",
+        "status": "warn",
+        "message": "Required service configuration should be reviewed before evals run.",
+        "durationMs": 0
+      },
+      {
+        "name": "agent_service_connectivity",
+        "status": "pass",
+        "message": "Agent service is reachable.",
+        "durationMs": 6
+      },
+      {
+        "name": "results_storage",
+        "status": "pass",
+        "message": "Eval results storage is ready.",
+        "durationMs": 15
+      },
+      {
+        "name": "usage_telemetry",
+        "status": "pass",
+        "message": "Usage telemetry is ready.",
+        "durationMs": 15
+      },
+      {
+        "name": "model_credentials",
+        "status": "pass",
+        "message": "Model credentials are ready.",
+        "durationMs": 11
+      },
+      {
+        "name": "model_configuration",
+        "status": "pass",
+        "message": "Model configuration is compatible.",
+        "durationMs": 0
+      },
+      {
+        "name": "model_configuration",
+        "status": "pass",
+        "message": "Provider-facing model \"ministral-3b-latest\" is available for provider \"mistral\" by static preflight rules.",
+        "durationMs": 0
+      },
+      {
+        "name": "agent_service_authorization",
+        "status": "pass",
+        "message": "Agent service authorization is ready.",
+        "durationMs": 7
+      },
+      {
+        "name": "system_check",
+        "status": "pass",
+        "message": "System readiness check passed.",
+        "durationMs": 7
+      },
+      {
+        "name": "system_check",
+        "status": "fail",
+        "code": "NO_PROJECT_DEFAULT",
+        "message": "System readiness check needs attention before evals can run.",
+        "durationMs": 5
+      }
+    ],
+    "timestamp": "2026-10-19T11:10:13.349Z"
+  }
+}

@@ -1,0 +1,137 @@
+{
+  "lockfile_version": "2.0",
+  "agents": {
+    "SIMIssueAgent": {
+      "version": "1.0",
+      "source_hash": "421b0d62e2787f49",
+      "status": "active"
+    },
+    "Telecom_Supervisor": {
+      "version": "1.0",
+      "source_hash": "401561f64d50adbf",
+      "status": "active"
+    },
+    "TopUpPlan_Query_Agent": {
+      "version": "1.0",
+      "source_hash": "d3cc6d365d41d469",
+      "status": "active"
+    },
+    "UserDataPlan": {
+      "version": "1.0",
+      "source_hash": "8108c7027a23739c",
+      "status": "active"
+    }
+  },
+  "tools": {
+    "tools/get_all_topup_plans.tools.abl": {
+      "source_hash": "491cd00a224c598e"
+    },
+    "tools/get_customer_details.tools.abl": {
+      "source_hash": "9cd0b584faf09220"
+    },
+    "tools/get_postpaid_topup_plans.tools.abl": {
+      "source_hash": "6074c1bc1628f797"
+    },
+    "tools/get_prepaid_topup_plans.tools.abl": {
+      "source_hash": "15fbb303eca9eda0"
+    },
+    "tools/get_topup_plans_by_account_type.tools.abl": {
+      "source_hash": "8fa3a246f17f9aba"
+    },
+    "tools/telecom_sim_mcp__add_customer_sim_issue.tools.abl": {
+      "source_hash": "324172fd15da3bd0"
+    },
+    "tools/telecom_sim_mcp__get_customer_sim_issues.tools.abl": {
+      "source_hash": "18eb1dd0dd208fb9"
+    },
+    "tools/telecom_sim_mcp__get_sim_issue_by_title.tools.abl": {
+      "source_hash": "96b0d8b21a8e2d77"
+    },
+    "tools/telecom_sim_mcp__get_sim_issue_details.tools.abl": {
+      "source_hash": "66908909db175431"
+    },
+    "tools/telecom_sim_mcp__list_sim_issues.tools.abl": {
+      "source_hash": "313aea89291f6264"
+    },
+    "tools/telecom_sim_mcp__update_customer_sim_issue_status.tools.abl": {
+      "source_hash": "f5a5afcf78ff5a7d"
+    }
+  },
+  "configs": {
+    "config/runtime-config.json": {
+      "source_hash": "7568b23181dc7642"
+    },
+    "config/llm-config.json": {
+      "source_hash": "8c6966cb1b299a23"
+    },
+    "config/project-model-selection.json": {
+      "source_hash": "baf9dffeb9e6e797"
+    },
+    "config/project-model-configs/ministral_3b__latest_.model-config.json": {
+      "source_hash": "2d2e1a4fc15f35a2"
+    },
+    "config/project-model-configs/gemini_3_5_flash_lite.model-config.json": {
+      "source_hash": "9d6fb3777d4ec8fd"
+    },
+    "core/mcp-servers/telecom_sim_mcp.mcp-config.json": {
+      "source_hash": "0d977aed667c0067"
+    }
+  },
+  "connections": {},
+  "guardrails": {
+    "guardrails/telecom_domain_policy.guardrail.json": {
+      "source_hash": "8db7abf4ec51cae5"
+    }
+  },
+  "workflows": {},
+  "evals": {
+    "evals/telecom_mistral_onescenario_trial/eval-set.json": {
+      "source_hash": "06060252c808be6b"
+    },
+    "evals/mistral_minimal_diagnostic/eval-set.json": {
+      "source_hash": "468750ab4f0edd03"
+    },
+    "evals/scenarios/general_and_account_matched_plans.scenario.json": {
+      "source_hash": "8519eb91358fb3b0"
+    },
+    "evals/scenarios/sim_support_and_service_switching.scenario.json": {
+      "source_hash": "f9a1b05abaa0c21e"
+    },
+    "evals/scenarios/mistral_prepaid_smoke_test.scenario.json": {
+      "source_hash": "e3e8096243473382"
+    },
+    "evals/personas/detail_oriented_customer.persona.json": {
+      "source_hash": "f24d13514cda3bfe"
+    },
+    "evals/personas/everyday_telecom_customer.persona.json": {
+      "source_hash": "57adf3637dcbf373"
+    },
+    "evals/evaluators/telecom_response_quality.evaluator.json": {
+      "source_hash": "1fe955cab2270d74"
+    },
+    "evals/evaluators/telecom_tool_correctness.evaluator.json": {
+      "source_hash": "2366c428c8d6cc3d"
+    },
+    "evals/evaluators/telecom_response_quality_evidence_v2.evaluator.json": {
+      "source_hash": "904796eeb3b7b237"
+    },
+    "evals/evaluators/telecom_tool_correctness_evidence_v2.evaluator.json": {
+      "source_hash": "0347facb19625844"
+    }
+  },
+  "search": {},
+  "channels": {},
+  "vocabulary": {},
+  "behavior_profiles": {},
+  "layer_hashes": {
+    "core": "c1aee51cc2824a79ed51b58fcca5f527c56fb46014b4d63fc74b45f5614bb60b",
+    "connections": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "guardrails": "938e00ba5d7b7abcec3814b9dc91313406c4d05aa4b5e500d6f75fadbaaca4dc",
+    "workflows": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "evals": "29d95349b6cea309a75a839c6027122cc7a7f9b32db5ae93a32b19136b5692ad",
+    "search": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "channels": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "vocabulary": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "integrity": "63efc380a783703093f6b6d539028a1ba873131d0d6eb6eab59c014174c504d7"
+}

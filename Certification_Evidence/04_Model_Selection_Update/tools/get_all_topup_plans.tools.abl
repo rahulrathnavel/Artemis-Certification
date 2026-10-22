@@ -1,0 +1,7 @@
+TOOLS:
+  get_all_topup_plans() -> object
+    description: "Retrieve all available prepaid and postpaid top-up plans for general plan queries."
+    type: http
+    endpoint: "https://telecom-customer-data.onrender.com/dataTopUp"
+    method: GET
+    body_mode: none

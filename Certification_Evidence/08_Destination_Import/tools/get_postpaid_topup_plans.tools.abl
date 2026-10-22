@@ -1,0 +1,7 @@
+TOOLS:
+  get_postpaid_topup_plans() -> object
+    description: "Retrieve postpaid top-up plans and their returned prices, allowances, and features."
+    type: http
+    endpoint: "https://telecom-customer-data.onrender.com/dataTopUp/postpaid"
+    method: GET
+    body_mode: none

@@ -1,0 +1,31 @@
+{
+  "name": "General_And_Account_Matched_Plans",
+  "description": "The customer first browses general prepaid plans. After receiving\nthe plans, they request plans matching their account. They provide\nCUST1001 when asked for their Customer ID.\n\nAfter receiving the prepaid account results, they ask for plans\nfor a different customer. They provide CUST1002 when asked.\n\nComplete the scenario after receiving the second customer's\npostpaid plan results.",
+  "category": "Policy",
+  "difficulty": "medium",
+  "entryAgent": "Telecom_Supervisor",
+  "initialMessage": "Show prepaid top-up plans.",
+  "expectedOutcome": "The customer receives general prepaid plans, then correctly\nmatched plans for CUST1001 and CUST1002. Account type is obtained\nfrom customer records. The second lookup does not reuse the first\ncustomer's ID or account type.",
+  "maxTurns": 12,
+  "tags": [
+    "Policy",
+    "Medium"
+  ],
+  "agentPath": [],
+  "expectedMilestones": [
+    "General prepaid browsing routes to TopUpPlan_Query_Agent and retrieves prepaid HTTP plan data.",
+    "An account-specific request routes to UserDataPlan and collects the Customer ID.",
+    "CUST1001 is looked up and its returned prepaid account type is used to fetch matching plans.",
+    "A different-customer request collects a new Customer ID without reusing previous customer data.",
+    "CUST1002 is looked up and its returned postpaid account type is used to fetch matching plans.",
+    "Postpaid results include the returned premium unlimited offer; completed answers are not duplicated."
+  ],
+  "expectedScenarioSignals": [],
+  "requiredContextFields": [],
+  "requiredContextFieldContracts": [],
+  "trajectoryExpectationBranches": [],
+  "semanticContracts": [],
+  "modality": "text",
+  "version": 2,
+  "_exportedId": "01a15398-ca0c-724b-afe0-f72d3d4b97a1"
+}

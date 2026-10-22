@@ -1,0 +1,251 @@
+AGENT: UserDataPlan
+
+PERSONA: "A clear and helpful telecom support assistant."
+
+GOAL: |
+  Collect and validate the Customer ID. If the user includes a valid CUST#### value inside a longer sentence, extract that value and continue without asking again.
+  Retrieve the customer's actual account type.
+  Retrieve and display top-up plans matching that account type.
+
+LIMITATIONS:
+  - "Never guess the customer's account type."
+  - "Never fabricate customer records or plans."
+  - "Do not display unrelated customer information."
+  - "Do not perform purchases or recharge transactions."
+
+TOOLS:
+  get_customer_details(customer_id: string)
+    description: "Retrieve customer records matching the supplied Customer ID so the customer’s actual account_type can be obtained."
+    type: http
+    latency: medium
+    side_effects: false
+
+  get_topup_plans_by_account_type(account_type: string)
+    description: "Retrieve top-up plans for the account type obtained from the customer lookup. Use lowercase prepaid or postpaid."
+    type: http
+    latency: medium
+    side_effects: false
+
+GUARDRAILS:
+  abusive_terms_check:
+    kind: input
+    check: abl.lower(input).contains("idiot") || abl.lower(input).contains("moron") || abl.lower(input).contains("stupid") || abl.lower(input).contains("asshole") || abl.lower(input).contains("bastard") || abl.lower(input).contains("bitch") || abl.lower(input).contains("fuck") || abl.lower(input).contains("shit")
+    action: block
+    message: "Please keep the conversation respectful. Rephrase your telecom request without abusive language."
+    priority: 0
+  abusive_language_check:
+    kind: input
+    llm_check: "Does the user's message contain abusive language, profanity, personal insults, threats, or degrading language directed at the assistant or another person? Ordinary frustration about telecom service is not by itself abuse. Return YES if abusive language is present. Return NO otherwise."
+    action: block
+    message: "Please keep the conversation respectful. Rephrase your telecom request without abusive language."
+    priority: 1
+    
+EXECUTION:
+  model: "ministral-3b-latest"
+
+BEHAVIOR:
+  role: assistant
+
+FLOW:
+  entry_point: collect_customer
+
+  steps:
+    - collect_customer
+    - validate_customer_id
+    - lookup_customer
+    - verify_response
+    - verify_customer
+    - extract_account_type
+    - verify_account_type
+    - lookup_plans
+    - prepare_plans
+    - verify_plans
+    - select_presentation
+    - show_prepaid_short
+    - show_prepaid_medium
+    - show_prepaid_long
+    - show_postpaid_mid
+    - show_postpaid_premium
+    - customer_not_found
+    - account_type_unavailable
+    - plans_unavailable
+    - service_unavailable
+
+  collect_customer:
+    REASONING: false
+    GATHER:
+      - customer_id: required
+        type: string
+        prompt: "Please enter your Customer ID: uppercase CUST followed by exactly four digits, for example CUST1001."
+        strategy: llm
+        extraction_pattern: "CUST[0-9]{4}"
+    THEN: validate_customer_id
+
+  validate_customer_id:
+    REASONING: false
+    CHECK: customer_id matches "^CUST[0-9]{4}$"
+    ON_FAIL: collect_customer
+    THEN: lookup_customer
+
+  lookup_customer:
+    REASONING: false
+    CALL: get_customer_details
+      WITH:
+        customer_id: customer_id
+      AS: customers
+    ON_SUCCESS:
+      THEN: verify_response
+    ON_FAIL:
+      THEN: service_unavailable
+
+  verify_response:
+    REASONING: false
+    CHECK: IS_ARRAY(customers.result)
+    ON_FAIL: service_unavailable
+    THEN: verify_customer
+
+  verify_customer:
+    REASONING: false
+    CHECK: LENGTH(customers.result) == 1 AND customers.result[0].customer_id == customer_id
+    ON_FAIL: customer_not_found
+    THEN: extract_account_type
+
+  extract_account_type:
+    REASONING: false
+    SET:
+      account_type = LOWER(COALESCE(customers.result[0].account_type, ""))
+    THEN: verify_account_type
+
+  verify_account_type:
+    REASONING: false
+    CHECK: account_type == "prepaid" OR account_type == "postpaid"
+    ON_FAIL: account_type_unavailable
+    THEN: lookup_plans
+
+  lookup_plans:
+    REASONING: false
+    CALL: get_topup_plans_by_account_type
+      WITH:
+        account_type: account_type
+      AS: matching_plans
+    ON_SUCCESS:
+      THEN: prepare_plans
+    ON_FAIL:
+      THEN: service_unavailable
+
+  prepare_plans:
+    REASONING: false
+    SET:
+      plans = COALESCE(matching_plans.result, matching_plans)
+    THEN: verify_plans
+
+  verify_plans:
+    REASONING: false
+    CHECK: LENGTH(plans.shortTerm.plans) > 0 OR LENGTH(plans.mediumTerm.plans) > 0 OR LENGTH(plans.longTerm.plans) > 0 OR LENGTH(plans.midTierEntertainmentPlan.plans) > 0 OR plans.premiumUnlimitedTier.price IS SET
+    ON_FAIL: plans_unavailable
+    THEN: select_presentation
+
+  select_presentation:
+    REASONING: false
+    CHECK: account_type == "prepaid"
+    ON_FAIL: show_postpaid_mid
+    THEN: show_prepaid_short
+
+  show_prepaid_short:
+    REASONING: false
+    RESPOND: |
+      Your account type is prepaid.
+      Short-term top-up plans
+      Validity: {{plans.shortTerm.validity}}
+    RICH_CONTENT:
+      LIST:
+        title: "Short-term prepaid plans"
+        items:
+          from: plans.shortTerm.plans
+          template:
+            title: "{{data}}"
+            subtitle: "{{currency}} {{price}}"
+    THEN: show_prepaid_medium
+
+  show_prepaid_medium:
+    REASONING: false
+    RESPOND: |
+      Medium-term top-up plans
+      Validity: {{plans.mediumTerm.validity}}
+    RICH_CONTENT:
+      LIST:
+        title: "Medium-term prepaid plans"
+        items:
+          from: plans.mediumTerm.plans
+          template:
+            title: "{{data}}"
+            subtitle: "{{currency}} {{price}}"
+    THEN: show_prepaid_long
+
+  show_prepaid_long:
+    REASONING: false
+    RESPOND: |
+      Long-term top-up plans
+      Validity: {{plans.longTerm.validity}}
+    RICH_CONTENT:
+      LIST:
+        title: "Long-term prepaid plans"
+        items:
+          from: plans.longTerm.plans
+          template:
+            title: "{{data}}"
+            subtitle: "{{currency}} {{price}}"
+    THEN: COMPLETE
+
+  show_postpaid_mid:
+    REASONING: false
+    RESPOND: |
+      Your account type is postpaid.
+      These are the mid-tier entertainment top-up plans.
+    RICH_CONTENT:
+      LIST:
+        title: "Postpaid entertainment plans"
+        items:
+          from: plans.midTierEntertainmentPlan.plans
+          template:
+            title: "{{data}}"
+            subtitle: "{{currency}} {{price}}"
+    THEN: show_postpaid_premium
+
+  show_postpaid_premium:
+    REASONING: false
+    RESPOND: |
+      {{#if plans.premiumUnlimitedTier.price}}
+      Premium unlimited top-up plan
+      Data: {{plans.premiumUnlimitedTier.data}}
+      Price: {{plans.premiumUnlimitedTier.currency}} {{plans.premiumUnlimitedTier.price}}
+      Speed: {{plans.premiumUnlimitedTier.speed}}
+      {{#if plans.premiumUnlimitedTier.features.localCallingAllowance.upTo}}
+      Local calling: up to {{plans.premiumUnlimitedTier.features.localCallingAllowance.upTo}} {{plans.premiumUnlimitedTier.features.localCallingAllowance.unit}}
+      {{/if}}
+      {{#if plans.premiumUnlimitedTier.features.internationalRoaming.dataAllowance}}
+      International roaming data: {{plans.premiumUnlimitedTier.features.internationalRoaming.dataAllowance}}
+      {{/if}}
+      {{/if}}
+    THEN: COMPLETE
+
+  customer_not_found:
+    REASONING: false
+    RESPOND: "No unique matching customer was found. Please check your Customer ID and try again."
+    THEN: COMPLETE
+
+  account_type_unavailable:
+    REASONING: false
+    RESPOND: "Your customer record does not contain a supported account type, so I cannot retrieve matching plans."
+    THEN: COMPLETE
+
+  plans_unavailable:
+    REASONING: false
+    RESPOND: "The response did not contain matching top-up offers that I could display."
+    THEN: COMPLETE
+
+  service_unavailable:
+    REASONING: false
+    RESPOND: "I could not retrieve the required information. Please try again later."
+    THEN: COMPLETE
+

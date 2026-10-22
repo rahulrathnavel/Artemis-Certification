@@ -1,0 +1,283 @@
+{
+  "schemaVersion": "eval-run-export.v1",
+  "exportedAt": "2026-10-19T11:26:37.528Z",
+  "projectId": "01a15398-32be-703d-b7a1-7d2ba6e402d7",
+  "evidence": {
+    "level": "full",
+    "message": null
+  },
+  "suite": {
+    "id": "01a15398-ca07-7009-abe2-7d14dcac29e0",
+    "name": "Telecom_Account_Switching_Diagnostic",
+    "description": "Evaluate telecom plan browsing, account-specific plans, SIM support, routing, response quality, and tool correctness.",
+    "evaluatorWeights": {
+      "01a153da-4ae7-799e-a396-6b6d678c2e14": 50,
+      "01a153da-524e-71ce-83d5-574000a9f3be": 50
+    }
+  },
+  "run": {
+    "id": "01a153e8-b55b-7d95-95a3-7bf01ac46544",
+    "name": null,
+    "status": "completed",
+    "createdAt": "2026-10-19T11:25:22.141Z",
+    "startedAt": "2026-10-19T11:25:22.456Z",
+    "completedAt": "2026-10-19T11:26:25.549Z",
+    "failure": null,
+    "summary": {
+      "totalConversations": 1,
+      "completedConversations": 1,
+      "totalEvaluations": 2,
+      "completedEvaluations": 2,
+      "validEvaluations": 2,
+      "missingEvaluations": 0,
+      "evaluationCoverage": 1,
+      "runtimeErrorCount": 0,
+      "judgeErrorCount": 0,
+      "scoreStatus": "final",
+      "avgScore": 0,
+      "scorePercent": 0,
+      "passRate": 0,
+      "scoresByEvaluator": {
+        "01a153da-4ae7-799e-a396-6b6d678c2e14": 0,
+        "01a153da-524e-71ce-83d5-574000a9f3be": 0
+      },
+      "evaluatorWeights": {
+        "01a153da-4ae7-799e-a396-6b6d678c2e14": 50,
+        "01a153da-524e-71ce-83d5-574000a9f3be": 50
+      },
+      "durationMs": 63064,
+      "estimatedCost": 0.110559,
+      "estimatedCostByModel": {
+        "gemini-3.5-flash-lite": 0.02172,
+        "ministral-3b-latest": 0.08883899999999999
+      },
+      "actualCost": 0.146214,
+      "stdDev": 0,
+      "confidenceInterval": [
+        0,
+        0
+      ],
+      "passAtK": 0,
+      "passExpK": 0,
+      "partial": false
+    },
+    "usage": {
+      "generationTokens": 39226,
+      "generationInputTokens": 34118,
+      "generationOutputTokens": 3479,
+      "generationEstimatedCost": 0.111,
+      "customerVisibleCost": 0.097,
+      "judgeTokensUsed": 7369,
+      "judgeInputTokens": 6240,
+      "judgeOutputTokens": 1129,
+      "judgeCost": 0.036,
+      "totalEstimatedCost": 0.147
+    }
+  },
+  "pagination": {
+    "caseCount": 1,
+    "truncated": false,
+    "limit": 2000
+  },
+  "cases": [
+    {
+      "caseId": "01a15398-ca12-7651-8b9b-259ea4cebad0:01a15398-ca0c-724b-afe0-f72d3d4b97a1:v0",
+      "status": "failed",
+      "personaId": "01a15398-ca12-7651-8b9b-259ea4cebad0",
+      "personaName": "Everyday_Telecom_Customer",
+      "scenarioId": "01a15398-ca0c-724b-afe0-f72d3d4b97a1",
+      "scenarioName": "General_And_Account_Matched_Plans",
+      "variantIndex": 0,
+      "modality": "text",
+      "channel": null,
+      "compositeScore": 0,
+      "failureLabels": [
+        "low_score",
+        "missed_milestone"
+      ],
+      "durationMs": 57334,
+      "turnCount": 7,
+      "tokenUsage": 39226,
+      "generationInputTokens": 34118,
+      "generationOutputTokens": 3479,
+      "estimatedCost": 0.110559,
+      "customerVisibleCost": 0.097056,
+      "costByModel": {
+        "gemini-3.5-flash-lite": 0.02172,
+        "ministral-3b-latest": 0.08883899999999999
+      },
+      "runtimeSessionId": "9d1f6c36-7fba-463d-acbb-c8f36f5b6f09",
+      "runtimeTraceIds": [],
+      "traceReferences": [
+        "eval-conversation:01a153e8-b55b-7d95-95a3-7bf01ac46544:01a15398-ca12-7651-8b9b-259ea4cebad0:01a15398-ca0c-724b-afe0-f72d3d4b97a1:v0:2026-10-19T11:26:20.464"
+      ],
+      "expectations": {
+        "expectedOutcome": "The customer receives general prepaid plans, then correctly\nmatched plans for CUST1001 and CUST1002. Account type is obtained\nfrom customer records. The second lookup does not reuse the first\ncustomer's ID or account type.",
+        "expectedMilestones": [
+          "General prepaid browsing routes to TopUpPlan_Query_Agent and retrieves prepaid HTTP plan data.",
+          "An account-specific request routes to UserDataPlan and collects the Customer ID.",
+          "CUST1001 is looked up and its returned prepaid account type is used to fetch matching plans.",
+          "A different-customer request collects a new Customer ID without reusing previous customer data.",
+          "CUST1002 is looked up and its returned postpaid account type is used to fetch matching plans.",
+          "Postpaid results include the returned premium unlimited offer; completed answers are not duplicated."
+        ],
+        "activeTrajectoryBranchId": null,
+        "expectedScenarioSignals": [],
+        "requiredContextFields": [],
+        "expectedAgentPath": [],
+        "pathExpectation": "exact",
+        "semanticContracts": [],
+        "responseOutcomeContract": null
+      },
+      "expectedMilestones": [
+        "General prepaid browsing routes to TopUpPlan_Query_Agent and retrieves prepaid HTTP plan data.",
+        "An account-specific request routes to UserDataPlan and collects the Customer ID.",
+        "CUST1001 is looked up and its returned prepaid account type is used to fetch matching plans.",
+        "A different-customer request collects a new Customer ID without reusing previous customer data.",
+        "CUST1002 is looked up and its returned postpaid account type is used to fetch matching plans.",
+        "Postpaid results include the returned premium unlimited offer; completed answers are not duplicated."
+      ],
+      "missedMilestones": [
+        "General prepaid browsing routes to TopUpPlan_Query_Agent and retrieves prepaid HTTP plan data.",
+        "An account-specific request routes to UserDataPlan and collects the Customer ID.",
+        "CUST1001 is looked up and its returned prepaid account type is used to fetch matching plans.",
+        "A different-customer request collects a new Customer ID without reusing previous customer data.",
+        "CUST1002 is looked up and its returned postpaid account type is used to fetch matching plans.",
+        "Postpaid results include the returned premium unlimited offer; completed answers are not duplicated."
+      ],
+      "expectedAgentPath": [],
+      "actualAgentPath": [
+        "Telecom_Supervisor",
+        "TopUpPlan_Query_Agent",
+        "Telecom_Supervisor",
+        "TopUpPlan_Query_Agent"
+      ],
+      "transcript": [
+        {
+          "role": "user",
+          "agentName": null,
+          "content": "Show prepaid top-up plans."
+        },
+        {
+          "role": "agent",
+          "agentName": "Telecom_Supervisor",
+          "content": "I was unable to complete the response. Please try again."
+        },
+        {
+          "role": "user",
+          "agentName": null,
+          "content": "Can you show me the prepaid top-up plans again, please?"
+        },
+        {
+          "role": "agent",
+          "agentName": "TopUpPlan_Query_Agent",
+          "content": "Here are the available prepaid top-up plans:\n\n**Short-term plans**\n- 1 GB for 3 days: $1.99 USD\n- 2 GB for 3 days: $2.99 USD\n\n**Medium-term plans**\n- 4 GB for 7–10 days: $5.99 USD\n- 8 GB for 7–10 days: $9.99 USD\n- 12 GB for 7–10 days: $13.99 USD\n\n**Long-term plans**\n- 20 GB for 30 days: $19.99 USD\n- 30 GB for 30 days: $27.99 USD\n- 50 GB for 30 days: $39.99 USD\n\n---\n**Category features**\n- All plans include unlimited calls and texts.\n- No hidden fees or charges apply."
+        },
+        {
+          "role": "user",
+          "agentName": null,
+          "content": "Thanks! How do I get the 20 GB for 30 days plan?"
+        },
+        {
+          "role": "agent",
+          "agentName": "TopUpPlan_Query_Agent",
+          "content": "I can only provide information about plans and their details. To purchase the **20 GB for 30 days** prepaid top-up plan, you’ll need to visit your service provider’s official website or contact their customer support directly. They’ll guide you through the activation process."
+        },
+        {
+          "role": "user",
+          "agentName": null,
+          "content": "Oh okay, thanks. Can you check my account for any matched plans too?"
+        },
+        {
+          "role": "agent",
+          "agentName": "TopUpPlan_Query_Agent",
+          "content": "Customer-specific plan matching is a separate supported service. I can only browse general plan options. If you’d like to see plans tailored to your account, please contact your service provider directly."
+        },
+        {
+          "role": "user",
+          "agentName": null,
+          "content": "Ah okay, thanks anyway for your help today!"
+        },
+        {
+          "role": "agent",
+          "agentName": "Telecom_Supervisor",
+          "content": "Here are the available prepaid top-up plans:\n\n**Short-term plans**\n- 1 GB for 3 days: $1.99 USD\n- 2 GB for 3 days: $2.99 USD\n\n**Medium-term plans**\n- 4 GB for 7–10 days: $5.99 USD\n- 8 GB for 7–10 days: $11.99 USD\n\n**Long-term plans**\n- 16 GB for 30 days: $19.99 USD\n\n**Category features**\n- All plans include unlimited calls and texts.\n- No hidden fees or charges apply."
+        },
+        {
+          "role": "user",
+          "agentName": null,
+          "content": "Oh, are these different plans than the ones you showed me before?"
+        },
+        {
+          "role": "agent",
+          "agentName": "TopUpPlan_Query_Agent",
+          "content": "The plans I retrieved now are slightly different from what I showed earlier. Here are the updated prepaid top-up plans:\n\n**Short-term plans**\n- 1 GB for 3 days: $1.99 USD\n- 2 GB for 3 days: $2.99 USD\n\n**Medium-term plans**\n- 4 GB for 7–10 days: $5.99 USD\n- 8 GB for 7–10 days: $9.99 USD\n- 12 GB for 7–10 days: $13.99 USD\n\n**Long-term plans**\n- 20 GB for 30 days: $19.99 USD\n- 30 GB for 30 days: $27.99 USD\n- 50 GB for 30 days: $39.99 USD\n\n**Category features**\n- All plans include unlimited calls and texts.\n- No hidden fees or charges apply.\n\n---\nTo purchase the **20 GB for 30 days** prepaid top-up plan, you’ll need to visit your service provider’s official website or contact their customer support directly. They’ll guide you through the activation process.\n\n---\nCustomer-specific plan matching is a separate supported service. I can only browse general plan options. If you’d like to see plans tailored to your account, please contact your service provider directly."
+        },
+        {
+          "role": "user",
+          "agentName": null,
+          "content": "Ah, got it! Thanks for clearing that up for me."
+        },
+        {
+          "role": "agent",
+          "agentName": "TopUpPlan_Query_Agent",
+          "content": "Here are the latest prepaid top-up plans, and I’ve explained how to get the 20 GB for 30 days plan. Customer-specific plan matching isn’t available through this service."
+        }
+      ],
+      "scores": [
+        {
+          "evaluatorId": "01a153da-4ae7-799e-a396-6b6d678c2e14",
+          "evaluatorName": "Telecom_Response_Quality_Evidence_v2",
+          "score": 0,
+          "scaleType": "pass-fail",
+          "passed": false,
+          "confidence": 1,
+          "reasoning": "The conversation failed to meet the scenario expectations. The agent never performed account-specific plan matching for CUST1001 or CUST1002, instead incorrectly stating that customer-specific plan matching is not available. Required milestones regarding account lookup and matching were completely unreached.",
+          "evidence": "Speaker B (Turn 4): 'Customer-specific plan matching is a separate supported service. I can only browse general plan options.'",
+          "failureLabels": [
+            "low_score"
+          ],
+          "judgeTokensUsed": 3694,
+          "judgeInputTokens": 3094,
+          "judgeOutputTokens": 600,
+          "judgeSplitKnown": true,
+          "judgeCost": 0.018282,
+          "judgeLatencyMs": 2166
+        },
+        {
+          "evaluatorId": "01a153da-524e-71ce-83d5-574000a9f3be",
+          "evaluatorName": "Telecom_Tool_Correctness_Evidence_v2",
+          "score": 0,
+          "scaleType": "pass-fail",
+          "passed": false,
+          "confidence": 1,
+          "reasoning": "The conversation only handled general prepaid top-up plans. When the user asked to check their account for matched plans, the agent stated that customer-specific plan matching is not supported by the service and refused/failed to perform customer lookups for CUST1001 and CUST1002 as required by the scenario expectations.",
+          "evidence": "Customer-specific plan matching is a separate supported service. I can only browse general plan options.",
+          "failureLabels": [
+            "low_score"
+          ],
+          "judgeTokensUsed": 3675,
+          "judgeInputTokens": 3146,
+          "judgeOutputTokens": 529,
+          "judgeSplitKnown": true,
+          "judgeCost": 0.017373,
+          "judgeLatencyMs": 1868
+        }
+      ],
+      "voice": null,
+      "error": null,
+      "recovery": {
+        "reason": "One or more evaluators marked this conversation below the required behavior gate.",
+        "evidenceSummary": "14 transcript turns · 2 evaluator results · 1 trace ref",
+        "nextStep": "Review evaluator reasoning and trace references, repair the failing behavior, then rerun this exact cell before promoting the suite.",
+        "retryTarget": {
+          "runId": null,
+          "personaId": "01a15398-ca12-7651-8b9b-259ea4cebad0",
+          "scenarioId": "01a15398-ca0c-724b-afe0-f72d3d4b97a1",
+          "variantIndex": 0
+        },
+        "traceAvailable": true
+      }
+    }
+  ]
+}

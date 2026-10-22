@@ -1,0 +1,139 @@
+{
+  "success": true,
+  "cells": [
+    {
+      "personaId": "01a15398-ca12-760d-b0d4-722f63baa3f9",
+      "scenarioId": "01a15398-ca0c-70f3-a6dd-70e60f546e87",
+      "evaluatorId": "01a153da-4ae7-799e-a396-6b6d678c2e14",
+      "variantIndex": 0,
+      "avgScore": 0,
+      "count": 1,
+      "passRate": 0,
+      "variance": null,
+      "minScore": 0,
+      "maxScore": 0,
+      "modality": "text",
+      "channel": "",
+      "scorePercent": 0
+    },
+    {
+      "personaId": "01a15398-ca12-760d-b0d4-722f63baa3f9",
+      "scenarioId": "01a15398-ca0c-70f3-a6dd-70e60f546e87",
+      "evaluatorId": "01a153da-524e-71ce-83d5-574000a9f3be",
+      "variantIndex": 0,
+      "avgScore": 0,
+      "count": 1,
+      "passRate": 0,
+      "variance": null,
+      "minScore": 0,
+      "maxScore": 0,
+      "modality": "text",
+      "channel": "",
+      "scorePercent": 0
+    },
+    {
+      "personaId": "01a15398-ca12-760d-b0d4-722f63baa3f9",
+      "scenarioId": "01a15398-ca0c-724b-afe0-f72d3d4b97a1",
+      "evaluatorId": "01a153da-4ae7-799e-a396-6b6d678c2e14",
+      "variantIndex": 0,
+      "avgScore": 0,
+      "count": 1,
+      "passRate": 0,
+      "variance": null,
+      "minScore": 0,
+      "maxScore": 0,
+      "modality": "text",
+      "channel": "",
+      "scorePercent": 0
+    },
+    {
+      "personaId": "01a15398-ca12-760d-b0d4-722f63baa3f9",
+      "scenarioId": "01a15398-ca0c-724b-afe0-f72d3d4b97a1",
+      "evaluatorId": "01a153da-524e-71ce-83d5-574000a9f3be",
+      "variantIndex": 0,
+      "avgScore": 0,
+      "count": 1,
+      "passRate": 0,
+      "variance": null,
+      "minScore": 0,
+      "maxScore": 0,
+      "modality": "text",
+      "channel": "",
+      "scorePercent": 0
+    },
+    {
+      "personaId": "01a15398-ca12-7651-8b9b-259ea4cebad0",
+      "scenarioId": "01a15398-ca0c-70f3-a6dd-70e60f546e87",
+      "evaluatorId": "01a153da-4ae7-799e-a396-6b6d678c2e14",
+      "variantIndex": 0,
+      "avgScore": 0,
+      "count": 1,
+      "passRate": 0,
+      "variance": null,
+      "minScore": 0,
+      "maxScore": 0,
+      "modality": "text",
+      "channel": "",
+      "scorePercent": 0
+    },
+    {
+      "personaId": "01a15398-ca12-7651-8b9b-259ea4cebad0",
+      "scenarioId": "01a15398-ca0c-70f3-a6dd-70e60f546e87",
+      "evaluatorId": "01a153da-524e-71ce-83d5-574000a9f3be",
+      "variantIndex": 0,
+      "avgScore": 0,
+      "count": 1,
+      "passRate": 0,
+      "variance": null,
+      "minScore": 0,
+      "maxScore": 0,
+      "modality": "text",
+      "channel": "",
+      "scorePercent": 0
+    },
+    {
+      "personaId": "01a15398-ca12-7651-8b9b-259ea4cebad0",
+      "scenarioId": "01a15398-ca0c-724b-afe0-f72d3d4b97a1",
+      "evaluatorId": "01a153da-4ae7-799e-a396-6b6d678c2e14",
+      "variantIndex": 0,
+      "avgScore": 0,
+      "count": 1,
+      "passRate": 0,
+      "variance": null,
+      "minScore": 0,
+      "maxScore": 0,
+      "modality": "text",
+      "channel": "",
+      "scorePercent": 0
+    },
+    {
+      "personaId": "01a15398-ca12-7651-8b9b-259ea4cebad0",
+      "scenarioId": "01a15398-ca0c-724b-afe0-f72d3d4b97a1",
+      "evaluatorId": "01a153da-524e-71ce-83d5-574000a9f3be",
+      "variantIndex": 0,
+      "avgScore": 0,
+      "count": 1,
+      "passRate": 0,
+      "variance": null,
+      "minScore": 0,
+      "maxScore": 0,
+      "modality": "text",
+      "channel": "",
+      "scorePercent": 0
+    }
+  ],
+  "names": {
+    "personas": {
+      "01a15398-ca12-760d-b0d4-722f63baa3f9": "Detail_Oriented_Customer",
+      "01a15398-ca12-7651-8b9b-259ea4cebad0": "Everyday_Telecom_Customer"
+    },
+    "scenarios": {
+      "01a15398-ca0c-70f3-a6dd-70e60f546e87": "SIM_Support_And_Service_Switching",
+      "01a15398-ca0c-724b-afe0-f72d3d4b97a1": "General_And_Account_Matched_Plans"
+    },
+    "evaluators": {
+      "01a153da-4ae7-799e-a396-6b6d678c2e14": "Telecom_Response_Quality_Evidence_v2",
+      "01a153da-524e-71ce-83d5-574000a9f3be": "Telecom_Tool_Correctness_Evidence_v2"
+    }
+  }
+}

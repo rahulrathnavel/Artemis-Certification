@@ -1,0 +1,5 @@
+const {createRequire}=require('node:module');const {pathToFileURL}=require('node:url');const fs=require('fs');(async()=>{const req=createRequire('C:/Users/rahul/AppData/Roaming/npm/node_modules/@koreai/artemis-platform-cli/package.json');const Conf=(await import(pathToFileURL(req.resolve('conf')).href)).default;const cfg=new Conf({projectName:'artemis-platform-cli',configName:'credentials',encryptionKey:'artemis-platform-cli-v1'});const base='https://agents.kore.ai/api/projects/01a15398-32be-703d-b7a1-7d2ba6e402d7/evals/runs/01a153e8-b55b-7d95-95a3-7bf01ac46544';const r=await fetch(base+'/status',{headers:{Authorization:'Bearer '+cfg.get('token')}});const d=await r.json();fs.writeFileSync('Certification_Evidence/06_Workflow_Repair/Focused_Status.json',JSON.stringify(d,null,2));console.log(JSON.stringify(d));})();
+
+
+
+

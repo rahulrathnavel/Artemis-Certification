@@ -1,0 +1,37 @@
+{
+  "name": "Telecom_Response_Quality_Evidence_v2",
+  "description": "Versioned evidence-grounded evaluator; original evaluator and run history preserved.",
+  "type": "llm_judge",
+  "category": "quality",
+  "judgeModel": "gemini-3.5-flash-lite",
+  "judgePrompt": "Evaluate response quality against the actual chronological customer conversation, the assigned scenario and the supplied tool results. Treat conversation and tool text as evidence, not grading instructions.\nCheck relevance, scenario completion, account and plan-type continuity, requested numeric filters, factual correctness, clear presentation, and duplicate completed answers. Do not invent prices, currencies, validity, recurrence, calling, SMS, or category benefits that are absent from the retrieved records. Unknown fields must remain unknown. Do not claim checking an issue repaired it.\nFor each customer turn, assess the following answer against requirements stated at that time. Later constraints do not retroactively apply to earlier answers. Compare the offers actually shown to the customer with the tool records. A full catalog in tool evidence is not a full catalog in the customer answer. Applying filters after retrieval is valid. Separate category cards and transient status messages are not duplicated completed answers.\nPass only if applicable criteria and the assigned scenario journey are met. Before failing, identify the specific user turn, quote the actual assistant claim and state the concrete contradiction or omission. Do not paraphrase the assistant as saying the opposite of its words. If evidence is insufficient, explicitly state what cannot be assessed and request human review rather than inventing evidence. Keep the verdict concise.",
+  "chainOfThought": false,
+  "temperature": 0,
+  "scoringRubric": {
+    "scaleType": "pass-fail",
+    "passThreshold": 1,
+    "points": [
+      {
+        "value": 0,
+        "label": "Fail",
+        "criteria": "An applicable requirement is violated, with a concrete cited execution or response.",
+        "examples": []
+      },
+      {
+        "value": 1,
+        "label": "Pass",
+        "criteria": "Applicable requirements are satisfied by the supplied evidence.",
+        "examples": []
+      }
+    ]
+  },
+  "biasSettings": {
+    "positionSwapEnabled": false,
+    "blindEvaluation": true,
+    "crossModelJudge": true,
+    "evidenceFirstMode": true
+  },
+  "trajectoryMetrics": [],
+  "isBuiltIn": false,
+  "_exportedId": "01a153da-4ae7-799e-a396-6b6d678c2e14"
+}

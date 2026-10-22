@@ -1,0 +1,50 @@
+{
+  "name": "Telecom_Account_Switching_Diagnostic",
+  "description": "Evaluate telecom plan browsing, account-specific plans, SIM support, routing, response quality, and tool correctness.",
+  "modality": "text",
+  "scope": {
+    "type": "project"
+  },
+  "variants": 1,
+  "maxConcurrency": 1,
+  "regressionThreshold": 85,
+  "ciEnabled": false,
+  "repairPolicy": {
+    "archEnabled": false,
+    "autoRepairEnabled": false,
+    "maxIterations": 1,
+    "maxPatchAttemptsPerAgent": 20,
+    "activationScorePercent": 60,
+    "targetScorePercent": 85,
+    "additiveToolRepairEnabled": true,
+    "autoPromoteOnGreen": false
+  },
+  "budgetPolicy": {
+    "maxCostUsdPerLoop": 5,
+    "maxCostUsdPerRun": 5,
+    "maxWallClockMinutes": 10,
+    "stopOnBudgetExceeded": true
+  },
+  "personaModel": "gemini-3.5-flash-lite",
+  "personaModelConfig": {
+    "temperature": 0,
+    "maxTokens": 4096
+  },
+  "evalTarget": {
+    "type": "working_copy"
+  },
+  "scenarioNames": [
+    "General_And_Account_Matched_Plans"
+  ],
+  "personaNames": [
+    "Everyday_Telecom_Customer"
+  ],
+  "evaluatorNames": [
+    "Telecom_Response_Quality_Evidence_v2",
+    "Telecom_Tool_Correctness_Evidence_v2"
+  ],
+  "evaluatorWeightsByName": {
+    "Telecom_Response_Quality_Evidence_v2": 50,
+    "Telecom_Tool_Correctness_Evidence_v2": 50
+  }
+}

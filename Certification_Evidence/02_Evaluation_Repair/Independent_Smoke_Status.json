@@ -1,0 +1,75 @@
+{
+  "success": true,
+  "status": "completed",
+  "startedAt": "2026-10-19T11:11:31.673Z",
+  "completedAt": "2026-10-19T11:11:57.465Z",
+  "createdAt": "2026-10-19T11:11:31.379Z",
+  "stage": null,
+  "totalCells": null,
+  "conversationsCompleted": null,
+  "totalJudgements": null,
+  "judgementsCompleted": null,
+  "completedCells": [],
+  "diagnosticSummary": {
+    "authority": "mongo_ledger_v2",
+    "expectedConversations": 1,
+    "completedConversations": 1,
+    "missingConversations": 0,
+    "expectedEvaluations": 2,
+    "completedEvaluations": 2,
+    "numericEvaluations": 2,
+    "missingEvaluations": 0,
+    "dispositions": {
+      "scored": 2
+    }
+  },
+  "preflightResult": null,
+  "failureCategory": null,
+  "failureMessage": null,
+  "error": null,
+  "executionEngine": "v2",
+  "runMode": "full",
+  "workflowStatus": {
+    "reachable": true,
+    "degraded": false,
+    "checked": false
+  },
+  "health": {
+    "rateLimitState": "none",
+    "deferredWorkCount": 0,
+    "poisonedWorkCount": 0,
+    "scoreStatus": "final",
+    "partial": false
+  },
+  "rollingScore": {
+    "status": "final",
+    "scorePercent": 100,
+    "successfulJudgements": 2,
+    "totalJudgements": 2
+  },
+  "progress": {
+    "totalCases": 1,
+    "completedCases": 1,
+    "totalEvaluations": 2,
+    "completedEvaluations": 2,
+    "runtimeErrors": 0,
+    "runtimeErrorMessage": null,
+    "pathMismatches": 0,
+    "usage": {
+      "generationTokens": 0,
+      "generationCostUsd": 0.044961,
+      "judgeTokens": 0,
+      "judgeInputTokens": 0,
+      "judgeOutputTokens": 0,
+      "judgeSplitKnown": true,
+      "judgeCostUsd": 0.016782,
+      "totalTokens": 0,
+      "totalCostUsd": 0.061743
+    },
+    "percentages": {
+      "conversations": 100,
+      "evaluations": 100,
+      "overall": 100
+    }
+  }
+}

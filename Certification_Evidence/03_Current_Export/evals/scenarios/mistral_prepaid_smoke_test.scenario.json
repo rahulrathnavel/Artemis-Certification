@@ -1,0 +1,20 @@
+{
+  "name": "Mistral_Prepaid_Smoke_Test",
+  "description": "Ask for prepaid top-up plans and finish after receiving the available plans.",
+  "difficulty": "medium",
+  "entryAgent": "Telecom_Supervisor",
+  "initialMessage": "Show prepaid top-up plans.",
+  "expectedOutcome": "Returns prepaid plans grounded in HTTP tool results.",
+  "maxTurns": 2,
+  "tags": [],
+  "agentPath": [],
+  "expectedMilestones": [],
+  "expectedScenarioSignals": [],
+  "requiredContextFields": [],
+  "trajectoryExpectationBranches": [],
+  "requiredContextFieldContracts": [],
+  "semanticContracts": [],
+  "modality": "text",
+  "version": 1,
+  "_exportedId": "01a153a0-3e82-7036-9d12-6158dafe98a6"
+}

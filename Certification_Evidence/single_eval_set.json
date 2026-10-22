@@ -1,0 +1,15 @@
+﻿{
+  "name":"Prepaid_Plans_Smoke_Single_Run",
+  "description":"Single one-turn prepaid browsing smoke evaluation.",
+  "modality":"text",
+  "personaIds":["01a152ed-ea44-7ea5-83d5-6af769fa5c69"],
+  "scenarioIds":["01a1635f-b7f2-7a48-bf95-d4f327b1dee5"],
+  "evaluatorIds":["01a152f5-52f8-7ae2-a73a-597f9998a131","01a152f5-cf11-7f38-abff-c48a3dff6e03"],
+  "evaluatorWeights":{"01a152f5-52f8-7ae2-a73a-597f9998a131":50,"01a152f5-cf11-7f38-abff-c48a3dff6e03":50},
+  "variants":1,
+  "maxConcurrency":1,
+  "regressionThreshold":85,
+  "ciEnabled":false,
+  "scope":{"type":"project"},
+  "evalTarget":{"type":"working_copy"}
+}

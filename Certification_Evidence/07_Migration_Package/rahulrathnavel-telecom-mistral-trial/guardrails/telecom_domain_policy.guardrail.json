@@ -1,0 +1,54 @@
+{
+  "name": "Telecom_Domain_Policy",
+  "description": "Restricts customer inputs to telecom support and prevents discussions about politics, religion, and sensitive personal beliefs.",
+  "scope": {
+    "type": "project"
+  },
+  "providerOverrides": [],
+  "rules": [
+    {
+      "guardrailName": "telecom_domain_check",
+      "override": "define",
+      "threshold": 0.5,
+      "action": {
+        "type": "block",
+        "message": "I can help with telecom support. Please ask about top-up plans, account-specific plans, or SIM issues."
+      },
+      "kind": "input",
+      "llmCheck": "Does the user's message violate the following telecom-domain policy?  Allowed: telecom support requests, top-up plans, customer account plan lookup, SIM issues, and conversation needed to complete those tasks. Allow greetings, thanks, brief confirmations, corrections, Customer IDs such as CUST1001, requests for another customer, and follow-up answers within a telecom conversation.  Violation: a request for unrelated subject matter, or a request to discuss politics, religion, or sensitive personal beliefs. A telecom reference does not make an otherwise prohibited discussion acceptable.  Return YES for a violation. Return NO for an allowed message.",
+      "enabled": true
+    }
+  ],
+  "constitution": [],
+  "settings": {
+    "failMode": "open",
+    "timeouts": {
+      "local": 100,
+      "model": 5000,
+      "llm": 15000
+    },
+    "streaming": {
+      "enabled": false,
+      "defaultInterval": "sentence",
+      "chunkSize": 256,
+      "maxLatencyMs": 500,
+      "earlyTermination": true
+    },
+    "coverage": "user_boundary"
+  },
+  "caching": {
+    "enabled": false,
+    "exactMatch": true,
+    "semanticMatch": false,
+    "semanticThreshold": 0.95,
+    "defaultTtlSeconds": 3600
+  },
+  "budget": {
+    "monthlyLimitUsd": 100,
+    "currentSpendUsd": 0,
+    "overspendAction": "alert_only"
+  },
+  "version": 1,
+  "status": "active",
+  "isActive": true
+}

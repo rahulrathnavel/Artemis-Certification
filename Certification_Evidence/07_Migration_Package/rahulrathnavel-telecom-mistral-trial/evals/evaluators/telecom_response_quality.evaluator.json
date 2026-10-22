@@ -1,0 +1,37 @@
+{
+  "name": "Telecom_Response_Quality",
+  "description": "Evaluate relevance, factual grounding, clarity, context handling,\nand completion of the assigned customer journey.",
+  "type": "llm_judge",
+  "category": "quality",
+  "judgeModel": "ministral-3b-latest",
+  "judgePrompt": "Evaluate the assistant's observable responses against the assigned\nscenario and available tool results.\n\nPass only when:\n- Responses address the customer's current request.\n- Plan facts and SIM information agree with supplied tool results.\n- Customer-specific answers use the correct customer and account.\n- Follow-up requests and service switches are handled coherently.\n- The scenario's required tasks are completed.\n- The assistant does not invent missing information or claim that\n  checking a SIM issue repaired it.\n- Completed answers are not unnecessarily duplicated.\n\nSeparate cards for different plan categories are legitimate.\nTemporary status messages are not duplicate completed answers.\n\nDistinguish an external service failure from an incorrect answer.\nExplain any failure with evidence from the conversation.",
+  "chainOfThought": true,
+  "temperature": 0,
+  "scoringRubric": {
+    "scaleType": "pass-fail",
+    "passThreshold": 1,
+    "points": [
+      {
+        "value": 0,
+        "label": "Fail",
+        "criteria": "Required criteria were not met.",
+        "examples": []
+      },
+      {
+        "value": 1,
+        "label": "Pass",
+        "criteria": "Required criteria were met.",
+        "examples": []
+      }
+    ]
+  },
+  "biasSettings": {
+    "positionSwapEnabled": true,
+    "blindEvaluation": true,
+    "crossModelJudge": false,
+    "evidenceFirstMode": true
+  },
+  "trajectoryMetrics": [],
+  "isBuiltIn": false,
+  "_exportedId": "01a15398-ca18-7b7d-b075-7171cb3bc142"
+}

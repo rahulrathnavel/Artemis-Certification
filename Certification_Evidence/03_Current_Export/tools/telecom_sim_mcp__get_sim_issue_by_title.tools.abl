@@ -1,0 +1,9 @@
+TOOLS:
+  telecom_sim_mcp__get_sim_issue_by_title(issue_title: string) -> object
+    description: "Retrieve details for a telecom SIM issue by issue title"
+    type: mcp
+    params:
+      issue_title:
+        description: "The SIM issue title (e.g., SIM card not detected)"
+    server: telecom_sim_mcp
+    server_tool: get_sim_issue_by_title

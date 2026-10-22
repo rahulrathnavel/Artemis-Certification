@@ -1,0 +1,151 @@
+{
+  "extraction": {
+    "strategy": "auto",
+    "correction_detection": "strategy",
+    "pipeline_v2_enabled": true,
+    "mode": "auto",
+    "confidence_threshold": 0.5,
+    "include_confidence": true
+  },
+  "multi_intent": {
+    "enabled": false,
+    "strategy": "primary_queue",
+    "unknown_relationship_strategy": "parallel",
+    "max_intents": 3,
+    "confidence_threshold": 0.6,
+    "queue_max_age_ms": 600000,
+    "advance_on_primary_response": true,
+    "list_other_requests": true
+  },
+  "inference": {
+    "confidence": 0.8,
+    "confirm": true,
+    "model_tier": "fast",
+    "max_fields_per_pass": 3
+  },
+  "conversion": {
+    "currency_mode": "static"
+  },
+  "pii_redaction": {
+    "enabled": true,
+    "redact_input": true,
+    "redact_output": true,
+    "custom_dimensions": {
+      "default_policy": "protect",
+      "rules": []
+    },
+    "tier": "advanced",
+    "latency_budget_ms": 200,
+    "confidence_threshold": 0.5,
+    "enabled_recognizer_packs": [
+      "core"
+    ],
+    "secret_scrub_exempt_fields": [],
+    "enabled_builtins": []
+  },
+  "lookup_tables": [],
+  "tool_call_policy": {
+    "max_boundary_call_depth": 3,
+    "max_boundary_calls_per_turn": 8,
+    "boundary_call_enabled": true
+  },
+  "streaming_safety": {
+    "mode": "legacy_passthrough"
+  },
+  "filler": {
+    "enabled": true,
+    "staticEnabled": true,
+    "chatEnabled": true,
+    "voiceEnabled": true,
+    "chatDelayMs": 1200,
+    "voiceDelayMs": 500,
+    "followUpGapMs": 1200,
+    "nativeTurnDelayMs": 500,
+    "cooldownMs": 3000,
+    "maxPerTurn": 5,
+    "pendingToolMaxStatusNudges": 3,
+    "pendingToolContextualFillerDeadlineMs": 500,
+    "conversationHistoryCount": 0,
+    "previousFillerCount": 0,
+    "maxOutputTokens": 30,
+    "promptOverrideMaxOutputTokens": 200,
+    "piggybackEnabled": true,
+    "pipelineGenerationEnabled": false,
+    "agentContextMode": "none",
+    "modelSource": "system"
+  },
+  "activityVisibility": {
+    "version": 1,
+    "defaults": {
+      "fillers": "on",
+      "thoughtSummaries": "off",
+      "actionProgress": "on",
+      "systemNotices": "on",
+      "debugDetails": "off"
+    },
+    "categories": {
+      "fillers": {
+        "enabled": true,
+        "useExistingFillerConfig": true
+      },
+      "thoughtSummaries": {
+        "includeModelSummaries": false,
+        "includeReasonFallback": false,
+        "maxChars": 240
+      },
+      "actionProgress": {
+        "enabled": true,
+        "memoryAndKnowledgeProgress": true,
+        "workflowSteps": true,
+        "toolStart": true,
+        "toolRetry": true,
+        "decisions": false,
+        "toolPreview": "off"
+      },
+      "systemNotices": {
+        "enabled": true,
+        "authRequired": true,
+        "approvalRequired": true,
+        "waitingForInput": true
+      },
+      "debugDetails": {
+        "enabled": false,
+        "mode": "off",
+        "allowRedactedToolInputs": false,
+        "allowRedactedToolOutputs": false
+      }
+    },
+    "channels": {},
+    "privacy": {
+      "exposeToolNames": false,
+      "exposeAgentNames": false,
+      "exposeWorkflowNames": false,
+      "exposeRawPreviews": false,
+      "redactSecrets": true,
+      "maxTextChars": 240
+    }
+  },
+  "voice": {
+    "sttVocabulary": [],
+    "sttMinConfidence": 0,
+    "streamingSayEnabled": true
+  },
+  "voiceNoInput": {
+    "enabled": false,
+    "mode": "static",
+    "timeoutMs": 5000,
+    "relaxedIntervalMs": 15000,
+    "maxRetries": 3,
+    "onExhausted": "hangup",
+    "order": "sequence",
+    "playStyle": "looped"
+  },
+  "analytics": {
+    "dimensions": [],
+    "outputItems": []
+  },
+  "orchestrationContract": {
+    "mode": "v2",
+    "origin": "new_empty"
+  }
+}

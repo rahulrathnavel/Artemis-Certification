@@ -1,0 +1,47 @@
+{
+  "name": "Mistral_Minimal_Diagnostic",
+  "modality": "text",
+  "variants": 1,
+  "maxConcurrency": 1,
+  "ciEnabled": false,
+  "scope": {
+    "type": "project"
+  },
+  "evalTarget": {
+    "type": "working_copy"
+  },
+  "personaModel": "ministral-3b-latest",
+  "personaModelConfig": {
+    "temperature": 0,
+    "maxTokens": 128
+  },
+  "repairPolicy": {
+    "archEnabled": false,
+    "autoRepairEnabled": false,
+    "maxIterations": 10,
+    "maxPatchAttemptsPerAgent": 20,
+    "activationScorePercent": 60,
+    "targetScorePercent": 85,
+    "additiveToolRepairEnabled": true,
+    "autoPromoteOnGreen": true
+  },
+  "budgetPolicy": {
+    "maxCostUsdPerLoop": 5,
+    "maxWallClockMinutes": 60,
+    "stopOnBudgetExceeded": true
+  },
+  "scenarioNames": [
+    "Mistral_Prepaid_Smoke_Test"
+  ],
+  "personaNames": [
+    "Everyday_Telecom_Customer"
+  ],
+  "evaluatorNames": [
+    "Telecom_Response_Quality_Evidence_v2",
+    "Telecom_Tool_Correctness_Evidence_v2"
+  ],
+  "evaluatorWeightsByName": {
+    "Telecom_Response_Quality_Evidence_v2": 50,
+    "Telecom_Tool_Correctness_Evidence_v2": 50
+  }
+}

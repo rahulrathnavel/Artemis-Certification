@@ -1,0 +1,50 @@
+{
+  "name": "Telecom_Mistral_OneScenario_Trial",
+  "description": "Evaluate telecom plan browsing, account-specific plans, SIM support, routing, response quality, and tool correctness.",
+  "modality": "text",
+  "scope": {
+    "type": "project"
+  },
+  "variants": 1,
+  "maxConcurrency": 1,
+  "regressionThreshold": 85,
+  "ciEnabled": false,
+  "repairPolicy": {
+    "archEnabled": true,
+    "autoRepairEnabled": false,
+    "maxIterations": 1,
+    "maxPatchAttemptsPerAgent": 20,
+    "activationScorePercent": 85,
+    "targetScorePercent": 85,
+    "additiveToolRepairEnabled": true,
+    "autoPromoteOnGreen": false
+  },
+  "budgetPolicy": {
+    "maxCostUsdPerLoop": 28,
+    "maxCostUsdPerRun": 28,
+    "maxWallClockMinutes": 60,
+    "stopOnBudgetExceeded": true
+  },
+  "personaModel": "ministral-3b-latest",
+  "personaModelConfig": {
+    "temperature": 0.7,
+    "maxTokens": 512
+  },
+  "evalTarget": {
+    "type": "working_copy"
+  },
+  "scenarioNames": [
+    "General_And_Account_Matched_Plans"
+  ],
+  "personaNames": [
+    "Everyday_Telecom_Customer"
+  ],
+  "evaluatorNames": [
+    "Telecom_Response_Quality",
+    "Telecom_Tool_Correctness"
+  ],
+  "evaluatorWeightsByName": {
+    "Telecom_Response_Quality": 50,
+    "Telecom_Tool_Correctness": 50
+  }
+}

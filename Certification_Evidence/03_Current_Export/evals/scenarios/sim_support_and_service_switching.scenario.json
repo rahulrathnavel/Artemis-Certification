@@ -1,0 +1,26 @@
+{
+  "name": "SIM_Support_And_Service_Switching",
+  "description": "The customer requests help for a SIM card that is not detected.\nAfter receiving the explanation, they request details for\nSIM-005.\n\nNext, they request previously reported SIM issues for CUST1001.\nProvide CUST1001 if the assistant asks for the Customer ID.\n\nFinally, they switch services by asking for general postpaid\ntop-up plans. Complete the scenario after receiving those plans.",
+  "category": "Repairs",
+  "difficulty": "medium",
+  "entryAgent": "Telecom_Supervisor",
+  "initialMessage": "My SIM card is not detected.",
+  "expectedOutcome": "The customer receives relevant SIM troubleshooting, SIM-005\ndetails, their returned issue history, and general postpaid\nplans. Responses reflect tool results and distinguish checking\nan issue from repairing it.",
+  "maxTurns": 20,
+  "tags": [
+    "Repairs",
+    "Medium"
+  ],
+  "agentPath": [],
+  "expectedMilestones": [
+    "SIM requests route to SIMIssueAgent. SIM explanations use appropriate read-only MCP tool results. SIM-005 details are retrieved using the issue ID. Customer SIM history is retrieved using custid CUST1001. The assistant does not claim that checking an issue repaired it. General postpaid browsing routes to TopUpPlan_Query_Agent. Postpaid information is retrieved using the appropriate HTTP tool. The conversation continues across service switches without duplicating completed answers."
+  ],
+  "expectedScenarioSignals": [],
+  "requiredContextFields": [],
+  "requiredContextFieldContracts": [],
+  "trajectoryExpectationBranches": [],
+  "semanticContracts": [],
+  "modality": "text",
+  "version": 1,
+  "_exportedId": "01a15398-ca0c-70f3-a6dd-70e60f546e87"
+}
