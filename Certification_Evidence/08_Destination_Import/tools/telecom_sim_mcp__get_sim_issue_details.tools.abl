@@ -1,9 +1,0 @@
-TOOLS:
-  telecom_sim_mcp__get_sim_issue_details(sim_issue_id: string) -> object
-    description: "Retrieve details for a telecom SIM issue by issue id"
-    type: mcp
-    params:
-      sim_issue_id:
-        description: "The SIM issue id (e.g., SIM-001)"
-    server: telecom_sim_mcp
-    server_tool: get_sim_issue_details

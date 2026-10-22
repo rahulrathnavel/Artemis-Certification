@@ -1,9 +1,0 @@
-TOOLS:
-  telecom_sim_mcp__get_customer_sim_issues(custid: string) -> object
-    description: "Retrieve customer raised SIM issues by customer id"
-    type: mcp
-    params:
-      custid:
-        description: "The customer id (e.g., CUST1001)"
-    server: telecom_sim_mcp
-    server_tool: get_customer_sim_issues

@@ -1,7 +1,0 @@
-TOOLS:
-  get_prepaid_topup_plans() -> object
-    description: "Retrieve prepaid top-up plans, including returned data allowances, prices, currencies, and validity."
-    type: http
-    endpoint: "https://telecom-customer-data.onrender.com/dataTopUp/prepaid"
-    method: GET
-    body_mode: none

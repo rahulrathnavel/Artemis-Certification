@@ -1,6 +1,0 @@
-TOOLS:
-  telecom_sim_mcp__list_sim_issues() -> object
-    description: "List all available telecom SIM issues with summary details"
-    type: mcp
-    server: telecom_sim_mcp
-    server_tool: list_sim_issues
